@@ -1,0 +1,29 @@
+# == Schema Information
+#
+# Table name: vehicles
+#
+#  id         :bigint           not null, primary key
+#  board      :string
+#  renavam    :string
+#  model      :string
+#  year       :string
+#  user_id    :bigint
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  board: MyString
+  renavam: MyString
+  model: MyString
+  year: MyString
+  user: one
+
+two:
+  board: MyString
+  renavam: MyString
+  model: MyString
+  year: MyString
+  user: two

@@ -1,0 +1,10 @@
+= simple_form_for @transfer, remote: true do |f|
+  .form-row
+    .col
+      = f.input :vehicle, label: 'Veículo', input_html: { value: @vehicle.board, readonly: true }
+    .col
+      = f.association :buyer, label: 'Comprador', collection: User.where.not(id: @vehicle.user.id), prompt: "Selecione o comprador"
+  
+  = f.input :seller_id, as: :hidden, input_html: {value: @vehicle.user.id}
+  .d-flex.justify-content-end
+    %button.btn.btn-dark.btn_transferir{type: 'submit'} Salvar

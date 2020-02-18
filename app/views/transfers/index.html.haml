@@ -1,0 +1,24 @@
+.d-flex.justify-content-between.align-items-center
+  %h2
+    %i.fas.fa-car-side
+    Transferências
+
+- if @transfers.present?
+  %hr.mb-5
+  .table-responsive
+    %table.table.table-hover.table-striped.table-bordered
+      %thead
+        %tr.text-center
+          %th{:scope => "col"} #
+          %th{:scope => "col"} Vendedor
+          %th{:scope => "col"} Comprador
+          %th{:scope => "col"} Veículo
+          %th{:scope => "col"} Data
+      %tbody
+        - @transfers.each_with_index do |transf, index|
+          %tr.text-center
+            %th{:scope => "row"}=index+1
+            %td=transf.seller.name
+            %td=transf.buyer.name
+            %td=transf.vehicle.board   
+            %td=transf.created_at.strftime("%d/%m/%Y - %H:%M")

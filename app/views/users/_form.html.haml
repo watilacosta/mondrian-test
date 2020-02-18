@@ -1,0 +1,16 @@
+= simple_form_for @user, remote: true do |f|
+  .form-group
+    = f.input :name, placeholder: 'Nome completo', label: 'Nome'
+  .form-row
+    .col
+      = f.input :password, placeholder: '*****', label: 'Senha'
+    .col
+      = f.input :password_confirmation, placeholder: '*****', label: 'Confirmação de senha'
+  .form-row
+    .col 
+      = f.input :email, placeholder: 'Email'
+    .col 
+      = f.input :cpf_cnpj, placeholder: 'Apenas Números', label: 'CPF/CNPJ'
+
+  .d-flex.justify-content-end
+    %button.btn.btn-dark{type: 'submi'} Salvar

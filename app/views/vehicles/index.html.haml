@@ -1,0 +1,42 @@
+.d-flex.justify-content-between.align-items-center
+  %h2
+    %i.fas.fa-car-side
+    Veículos
+
+  = link_to new_vehicle_path, remote: true, class: 'btn btn-outline-primary btn-sm' do
+    %i.fas.fa-plus
+    Adicionar
+
+- if @vehicles.present?
+  %hr.mb-5
+  .table-responsive
+    %table.table.table-hover.table-striped.table-bordered
+      %thead
+        %tr.text-center
+          %th{:scope => "col"} #
+          %th{:scope => "col"} Placa
+          %th{:scope => "col"} Renavam
+          %th{:scope => "col"} Modelo
+          %th{:scope => "col"} Ano Fabricação
+          %th{:scope => "col"} Proprietário
+          %th{:scope => "col"}
+            %i.fa.fa-cogs
+      %tbody
+        - @vehicles.each_with_index do |veiculo, index|
+          %tr.text-center
+            %th{:scope => "row"}=index+1
+            %td=veiculo.board.upcase
+            %td=veiculo.renavam
+            %td=veiculo.model
+            %td=veiculo.year
+            %td=veiculo.user.name
+            %td 
+              = link_to edit_vehicle_path(veiculo), remote: true, class: 'btn btn-sm btn-outline-dark', title: 'Editar' do
+                %i.fas.fa-edit
+
+              = link_to vehicle_path(veiculo), method: :delete, data: {confirm: "Apagar Veículo #{veiculo.board} ?"}, 
+                class: 'btn btn-outline-dark btn-sm mx-1', title: 'Apagar' do
+                %i.fas.fa-trash
+              
+              = link_to new_transfer_path(veiculo: veiculo), remote: true, class: 'btn btn-sm btn-outline-dark', title: 'Transferir veículo' do
+                %i.fas.fa-exchange-alt

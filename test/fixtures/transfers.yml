@@ -1,0 +1,23 @@
+# == Schema Information
+#
+# Table name: transfers
+#
+#  id         :bigint           not null, primary key
+#  seller_id  :bigint
+#  buyer_id   :bigint
+#  vehicle_id :bigint
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  seller: one
+  buyer: one
+  vehicle: one
+
+two:
+  seller: two
+  buyer: two
+  vehicle: two

@@ -1,0 +1,16 @@
+= simple_form_for @vehicle, remote: true do |f|
+  .form-row
+    .col
+      = f.input :board, placeholder: 'Placa do veículo', label: 'Placa'
+    .col
+      = f.input :renavam, placeholder: 'Apenas números'
+  .form-row
+    .col
+      = f.input :model, placeholder: 'Ex: Gol 1.8 G5', label: 'Modelo'
+    .col
+      = f.input :year, placeholder: 'Ano de fabricação', label: 'Ano'
+  .form-group
+    = f.association :user, label_method: :name, value_method: :id, include_blank: 'Escolha o proprietário'
+
+  .d-flex.justify-content-end
+    %button.btn.btn-dark{type: 'submi'} Salvar

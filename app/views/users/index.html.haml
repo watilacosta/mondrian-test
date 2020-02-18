@@ -1,0 +1,34 @@
+.d-flex.justify-content-between.align-items-center
+  %h2
+    %i.fas.fa-users
+    Pessoas
+
+  = link_to new_user_path, remote: true, class: 'btn btn-outline-primary btn-sm' do
+    %i.fas.fa-plus
+    Adicionar
+
+%hr.mb-5
+.table-responsive
+  %table.table.table-hover.table-striped.table-bordered
+    %thead
+      %tr.text-center
+        %th{:scope => "col"} #
+        %th{:scope => "col"} Nome
+        %th{:scope => "col"} Email
+        %th{:scope => "col"} CPF/CNPJ
+        %th{:scope => "col"}
+          %i.fa.fa-cogs
+    %tbody
+      - @users.each_with_index do |user, index|
+        %tr.text-center
+          %th{:scope => "row"}=index+1
+          %td=user.name
+          %td=user.email
+          %td=user.cpf_cnpj
+          %td 
+            = link_to edit_user_path(user), remote: true, class: 'btn btn-sm btn-outline-dark', title: 'Editar' do
+              %i.fas.fa-edit
+            - unless user.eql?(current_user)
+              = link_to user_path(user), method: :delete, data: {confirm: "Apagar Pessoa #{user.name} ?"}, 
+                class: 'btn btn-outline-dark btn-sm mx-1', title: 'Apagar' do
+                %i.fas.fa-trash
