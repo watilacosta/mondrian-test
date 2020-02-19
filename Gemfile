@@ -72,3 +72,4 @@ gem 'jquery-rails'
 gem "haml-rails", "~> 2.0"
 gem 'simple_form'
 gem 'font-awesome-sass', '~> 5.12.0'
+gem "cpf_cnpj"

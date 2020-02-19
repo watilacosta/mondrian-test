@@ -1,4 +1,5 @@
 = simple_form_for @user, remote: true do |f|
+  = render 'layouts/flash_message'
   .form-group
     = f.input :name, placeholder: 'Nome completo', label: 'Nome'
   .form-row

@@ -13,12 +13,17 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     respond_to do |format|
-      if @user.save
+      if @user.save!
         flash[:success] = 'Pessoa cadastrada com sucesso!'
         format.js { redirect_to users_path }
       else
         format.js { render :new }
       end
+    end
+  rescue => e
+    respond_to do |format|
+      flash.now[:error] = e
+      format.js { render :new }
     end
   end
 
@@ -27,12 +32,18 @@ class UsersController < ApplicationController
 
   def update
     respond_to do |format|
-      if @user.update(user_params)
+      if @user.update!(user_params)
         flash[:success] = 'Pessoa atualizada com sucesso!'
         format.js { redirect_to users_path }
       else
+        flash.now[:error] = e
         format.js { render :edit }
       end
+    end
+  rescue => e
+    respond_to do |format|
+      flash.now[:error] = e
+      format.js { render :edit }
     end
   end
 

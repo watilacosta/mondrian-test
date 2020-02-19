@@ -19,11 +19,12 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   # devise :database_authenticatable, :registerable,
   #        :recoverable, :rememberable, :validatable
-
-  devise :database_authenticatable,
-         :recoverable, :rememberable, :validatable
   
+  devise :database_authenticatable, :recoverable, :rememberable, :validatable
+
   has_many :vehicles, dependent: :destroy
 
   validates :name, :cpf_cnpj, presence: true
+  validates :cpf_cnpj, uniqueness: {message: "CPF/CNPJ já existe!"},  allow_blank: true
+  validates_with CpfCnpjValidator, fields: [:cpf_cnpj]
 end
