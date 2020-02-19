@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  get 'transfers/index'
   root 'home#index'
   devise_for :users
 
